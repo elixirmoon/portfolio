@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { flushSync } from "react-dom";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { Moon, Sun } from "lucide-react";
@@ -10,13 +11,51 @@ export default function EditorialPortfolio() {
   const [dark, setDark] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  useEffect(() => {
-    if (dark) {
-      document.documentElement.setAttribute("data-theme", "dark");
-    } else {
-      document.documentElement.removeAttribute("data-theme");
+  const toggleTheme = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    const nextDark = !dark;
+    const applyTheme = () => {
+      if (nextDark) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      } else {
+        document.documentElement.removeAttribute("data-theme");
+      }
+      setDark(nextDark);
+    };
+
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (typeof document.startViewTransition !== "function" || prefersReduced) {
+      applyTheme();
+      return;
     }
-  }, [dark]);
+
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
+    const maxRadius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y)
+    );
+
+    const transition = document.startViewTransition(() => {
+      flushSync(applyTheme);
+    });
+
+    await transition.ready;
+
+    document.documentElement.animate(
+      {
+        clipPath: [
+          `circle(0px at ${x}px ${y}px)`,
+          `circle(${maxRadius}px at ${x}px ${y}px)`,
+        ],
+      },
+      {
+        duration: 520,
+        easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+        pseudoElement: "::view-transition-new(root)",
+      }
+    );
+  };
 
   const handleCopyEmail = async () => {
     try {
@@ -52,7 +91,7 @@ export default function EditorialPortfolio() {
         </div>
 
         <button
-          onClick={() => setDark((d) => !d)}
+          onClick={toggleTheme}
           aria-label={dark ? "Switch to light theme" : "Switch to dark theme"}
           title={dark ? "Switch to light theme" : "Switch to dark theme"}
           className="relative flex h-8 w-8 items-center justify-center rounded-full border border-[var(--rule)] bg-[var(--surface)] text-[var(--ink-muted)] hover:border-[var(--accent)] hover:text-[var(--ink)] cursor-pointer"
