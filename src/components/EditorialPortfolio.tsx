@@ -2,6 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import { AnimatePresence, motion } from "framer-motion";
+import { Moon, Sun } from "lucide-react";
 import { PORTFOLIO } from "@/data/portfolio";
 
 export default function EditorialPortfolio() {
@@ -51,9 +53,35 @@ export default function EditorialPortfolio() {
 
         <button
           onClick={() => setDark((d) => !d)}
-          className="rounded-md border border-[var(--rule)] bg-[var(--surface)] px-2.5 py-1 text-xs font-medium text-[var(--ink-muted)] hover:text-[var(--ink)] cursor-pointer"
+          aria-label={dark ? "Switch to light theme" : "Switch to dark theme"}
+          title={dark ? "Switch to light theme" : "Switch to dark theme"}
+          className="relative flex h-8 w-8 items-center justify-center rounded-full border border-[var(--rule)] bg-[var(--surface)] text-[var(--ink-muted)] hover:border-[var(--accent)] hover:text-[var(--ink)] cursor-pointer"
         >
-          {dark ? "Light" : "Dark"}
+          <AnimatePresence mode="wait" initial={false}>
+            {dark ? (
+              <motion.span
+                key="sun"
+                initial={{ opacity: 0, rotate: -90, scale: 0.6 }}
+                animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                exit={{ opacity: 0, rotate: 90, scale: 0.6 }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
+                className="flex items-center justify-center"
+              >
+                <Sun className="h-4 w-4 text-[var(--accent)]" />
+              </motion.span>
+            ) : (
+              <motion.span
+                key="moon"
+                initial={{ opacity: 0, rotate: 90, scale: 0.6 }}
+                animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                exit={{ opacity: 0, rotate: -90, scale: 0.6 }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
+                className="flex items-center justify-center"
+              >
+                <Moon className="h-4 w-4 text-[var(--accent)]" />
+              </motion.span>
+            )}
+          </AnimatePresence>
         </button>
       </header>
 
@@ -95,7 +123,7 @@ export default function EditorialPortfolio() {
                     href={project.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="font-semibold text-[var(--ink)] underline decoration-[var(--rule)] underline-offset-4 hover:decoration-[var(--accent)] hover:text-[var(--accent)] transition-colors"
+                    className="font-semibold text-[var(--ink)] underline decoration-[var(--rule)] underline-offset-4 hover:decoration-[var(--accent)] hover:text-[var(--accent)]"
                   >
                     {project.title}
                   </a>
