@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 10, "column": 0}, "map": {"version":3,"sources":["file:///home/lara/Projects/Portfolio/src/app/page.tsx"],"sourcesContent":["import AtelierPortfolio from \"@/components/AtelierPortfolio\";\n\nexport default function HomePage() {\n  return <AtelierPortfolio />;\n}\n"],"names":["HomePage","AtelierPortfolio"],"mappings":";;;;;;;;;;;;AAEe,SAASA;IACtB,qBAAO,8OAACC;;;;;AACV"}}]
-}

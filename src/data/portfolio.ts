@@ -1,4 +1,4 @@
-export type SkillCategory = "Languages" | "Frontend" | "Systems & CS" | "Workflow";
+export type SkillCategory = "Programming" | "Frontend" | "Foundations";
 
 export interface Skill {
   id: string;
@@ -8,220 +8,97 @@ export interface Skill {
 }
 
 export interface Project {
-  number: string;
   title: string;
   tag: string;
-  year: string;
-  role: string;
   summary: string;
   stack: string[];
-  posterQuote: string;
   href?: string;
 }
 
-export interface DisciplineNote {
-  numeral: string;
-  title: string;
-  detail: string;
-}
-
 export const PORTFOLIO = {
-  name: "Lara Bennett",
+  name: "Lara Ilamaran",
   firstName: "Lara",
-  lastName: "Bennett",
+  lastName: "Ilamaran",
   handle: "elixirmoon",
-  initials: "L.B.",
-  headline: "Software Engineer & Creative Web Developer",
-  bio: "Building dependable software across Java, C++, Python, and TypeScript—pairing clean algorithms and backend rigor with calm, editorial craft on the web.",
-  location: "Available Worldwide",
+  role: "CS & Mathematics Student",
+  bio: "Computer Science and Mathematics student working with C++ and Python alongside foundational frontend skills in HTML, CSS, and JavaScript—learning deliberately and building step by step.",
   email: "elixir.moon.me@gmail.com",
   github: "https://github.com/elixirmoon",
 
-  highlights: [
-    { label: "Core Stack", value: "Java · C++ · Python · TypeScript" },
-    { label: "Interface Craft", value: "React · Next.js · GSAP · Lenis" },
-    { label: "Engineering", value: "DSA · Local-First · Git Workflows" },
-  ],
-
   skills: [
-    {
-      id: "java",
-      name: "Java",
-      category: "Languages",
-      note: "Object-oriented architecture, collections, backend logic, and algorithmic problem solving.",
-    },
     {
       id: "cpp",
       name: "C++",
-      category: "Languages",
-      note: "STL mastery, memory-conscious data structures, and competitive programming.",
+      category: "Programming",
+      note: "Core syntax, STL containers, and structured problem solving.",
     },
     {
       id: "python",
       name: "Python",
-      category: "Languages",
-      note: "Clean scripting, developer tooling, automation, and algorithmic prototyping.",
+      category: "Programming",
+      note: "Readable scripting, automation, and foundational programming.",
     },
     {
-      id: "typescript",
-      name: "TypeScript",
-      category: "Languages",
-      note: "Expressive, type-safe application design across components and state.",
+      id: "html",
+      name: "HTML5",
+      category: "Frontend",
+      note: "Semantic structure and clean document markup.",
+    },
+    {
+      id: "css",
+      name: "CSS3",
+      category: "Frontend",
+      note: "Responsive layouts with Flexbox, Grid, and clean styling.",
     },
     {
       id: "javascript",
       name: "JavaScript",
-      category: "Languages",
-      note: "Modern ESNext, asynchronous flows, browser APIs, and smooth UI responsiveness.",
-    },
-    {
-      id: "html-css",
-      name: "HTML5 & CSS3",
-      category: "Languages",
-      note: "Editorial typography, semantic layout, responsive grids, and refined styling.",
-    },
-    {
-      id: "react",
-      name: "React",
       category: "Frontend",
-      note: "Composable UI craft, custom hooks, and calm, predictable client state.",
+      note: "ES6+ fundamentals, DOM interaction, and dynamic UI behavior.",
     },
     {
-      id: "nextjs",
-      name: "Next.js",
-      category: "Frontend",
-      note: "App Router architecture, clean server/client rendering, and fast builds.",
-    },
-    {
-      id: "vite",
-      name: "Vite",
-      category: "Frontend",
-      note: "Instant local feedback loops and lightweight modern asset bundling.",
-    },
-    {
-      id: "tailwind",
-      name: "Tailwind CSS",
-      category: "Frontend",
-      note: "Token-driven palettes, balanced whitespace, and cohesive design systems.",
-    },
-    {
-      id: "gsap",
-      name: "GSAP & Lenis",
-      category: "Frontend",
-      note: "Masked typographic reveals, ScrollTrigger choreography, and inertial scrolling.",
-    },
-    {
-      id: "framer-motion",
-      name: "Framer Motion",
-      category: "Frontend",
-      note: "Spring physics, shared layout transitions, and responsive micro-interactions.",
-    },
-    {
-      id: "dsa",
-      name: "Data Structures & Algorithms",
-      category: "Systems & CS",
-      note: "Trees, graphs, dynamic programming, and thoughtful complexity trade-offs.",
-    },
-    {
-      id: "backend",
-      name: "Backend Systems",
-      category: "Systems & CS",
-      note: "Structured APIs, reliable state handling, and clean domain modeling.",
-    },
-    {
-      id: "competitive",
-      name: "Competitive Programming",
-      category: "Systems & CS",
-      note: "Analytical problem decomposition under tight time and memory constraints.",
-    },
-    {
-      id: "local-first",
-      name: "Local-First Storage",
-      category: "Systems & CS",
-      note: "Browser-persisted state that feels instantaneous and works effortlessly.",
+      id: "logic",
+      name: "Problem Solving & Math",
+      category: "Foundations",
+      note: "Step-by-step analytical thinking, logic, and data structures.",
     },
     {
       id: "git",
-      name: "Git & GitHub Workflows",
-      category: "Workflow",
-      note: "Thoughtful branching, clean pull requests, merging, and conflict resolution.",
-    },
-    {
-      id: "reviews",
-      name: "Code Collaboration",
-      category: "Workflow",
-      note: "Shared repository hygiene, structured commits, and clean PR reviews.",
+      name: "Git & GitHub",
+      category: "Foundations",
+      note: "Version control, commits, branches, and pull requests.",
     },
     {
       id: "hosting",
-      name: "Custom Web Hosting",
-      category: "Workflow",
-      note: "Domain routing, custom server setup, and self-hosted web deployments.",
-    },
-    {
-      id: "linux",
-      name: "Linux Environment",
-      category: "Workflow",
-      note: "Comfortable terminal workflows, environment setup, and automation.",
+      name: "Web Hosting & DNS",
+      category: "Foundations",
+      note: "Deploying sites on Vercel with custom domains like moon.is-a.dev.",
     },
   ] satisfies Skill[],
 
   projects: [
     {
-      number: "01",
-      title: "Editorial Portfolio Architecture",
-      tag: "Live Showcase",
-      year: "2026",
-      role: "Design & Engineering",
-      posterQuote: "Typographic rhythm meets modern engineering.",
+      title: "Personal Portfolio",
+      tag: "Live",
       summary:
-        "A print-inspired personal portfolio engineered with Next.js, TypeScript, Tailwind CSS, GSAP ScrollTrigger, Lenis smooth scroll, and Framer Motion.",
-      stack: ["Next.js", "TypeScript", "GSAP", "Lenis", "Framer Motion"],
+        "My personal website hosted at moon.is-a.dev via Vercel, designed to stay simple, calm, and easy to read.",
+      stack: ["HTML", "CSS", "JavaScript", "Next.js"],
+      href: "https://moon.is-a.dev/",
+    },
+    {
+      title: "C++ & Python Practice",
+      tag: "In Progress",
+      summary:
+        "Space reserved for upcoming C++ and Python exercises, math-focused problem solving, and small utilities.",
+      stack: ["C++", "Python"],
       href: "https://github.com/elixirmoon",
     },
     {
-      number: "02",
-      title: "Algorithms & Systems Archive",
-      tag: "Curated Slot",
-      year: "2026",
-      role: "Java · C++ · Python",
-      posterQuote: "Clean data structures, minimal overhead.",
+      title: "Next Frontend Build",
+      tag: "Upcoming",
       summary:
-        "Placeholder slot reserved for upcoming open-source repositories covering Java, C++, and Python data structures, graph traversals, and system design.",
-      stack: ["Java", "C++", "Python", "DSA"],
-      href: "https://github.com/elixirmoon",
-    },
-    {
-      number: "03",
-      title: "Upcoming Creative Web Build",
-      tag: "Open Chapter",
-      year: "Soon",
-      role: "Full-Stack",
-      posterQuote: "Crafted for clarity and permanence.",
-      summary:
-        "Reserved chapter for my next shipped product. Update src/data/portfolio.ts anytime to add project case studies, live demos, and links.",
-      stack: ["React", "Vite", "Tailwind CSS"],
+        "Open slot for my next web project—editable anytime inside src/data/portfolio.ts.",
+      stack: ["HTML", "CSS", "JavaScript"],
     },
   ] satisfies Project[],
-
-  notes: [
-    {
-      numeral: "01",
-      title: "Performance by Design",
-      detail:
-        "Grounded in Java, C++, Python, and algorithmic rigor—writing software where clarity and speed reinforce each other.",
-    },
-    {
-      numeral: "02",
-      title: "Editorial Sensitivity",
-      detail:
-        "Treating typography, negative space, and inertial scroll motion as structural elements rather than afterthoughts.",
-    },
-    {
-      numeral: "03",
-      title: "Disciplined Craft",
-      detail:
-        "Structured Git branches, thoughtful pull requests, local-first reliability, and clean self-hosted web deployments.",
-    },
-  ] satisfies DisciplineNote[],
 };

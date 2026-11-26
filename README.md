@@ -1,12 +1,10 @@
-# Lara Bennett — Portfolio
+# Lara Ilamaran — Portfolio
 
-French-editorial inspired personal portfolio built with **Next.js (App Router)**, **React 19**, **TypeScript**, **Tailwind CSS v4**, **GSAP (`@gsap/react` + `ScrollTrigger`)**, **Lenis** smooth scroll, and **Framer Motion**.
+Simple, clean personal portfolio built with **Next.js (App Router)**, **React**, **TypeScript**, **Tailwind CSS**, and **Framer Motion**.
 
-## Editing Your Info & Projects
+## Editing Content
 
-All profile details, skills, projects, and notes live in:
-
-- [`src/data/portfolio.ts`](src/data/portfolio.ts)
+All profile details, skills, and projects live in [`src/data/portfolio.ts`](src/data/portfolio.ts).
 
 ## Development
 
@@ -16,4 +14,3 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
-# portfolio
