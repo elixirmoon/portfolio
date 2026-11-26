@@ -1,25 +1,36 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #faf9f6;
-  --surface: #f2efe9;
-  --ink: #1b1918;
-  --ink-muted: #5c5652;
-  --ink-subtle: #8c847e;
+  --bg: #fcf8f9;
+  --surface: #f5edf0;
+  --ink: #1e1619;
+  --ink-muted: #605156;
+  --ink-subtle: #918086;
   --accent: #b84a62;
-  --rule: #e6e0d8;
+  --rule: #eae0e3;
   --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 html[data-theme="dark"] {
-  --bg: #111010;
-  --surface: #1b1919;
-  --ink: #f3efec;
-  --ink-muted: #a8a09b;
-  --ink-subtle: #746c67;
+  --bg: #141012;
+  --surface: #1f191c;
+  --ink: #f7f0f2;
+  --ink-muted: #b8a8ad;
+  --ink-subtle: #817177;
   --accent: #e49aa8;
-  --rule: #282524;
+  --rule: #2d2428;
+}
+
+html,
+body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
 }
 
 body {
@@ -33,7 +44,7 @@ code {
   font-family: var(--font-mono);
 }
 
-/* Circular theme reveal + smooth icon swap via View Transitions API */
+/* Circular theme reveal via View Transitions API */
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;
@@ -45,39 +56,5 @@ code {
 }
 
 ::view-transition-new(root) {
-  z-index: 9998;
-}
-
-::view-transition-group(theme-icon) {
   z-index: 9999;
-}
-
-::view-transition-old(theme-icon) {
-  animation: theme-icon-out 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-::view-transition-new(theme-icon) {
-  animation: theme-icon-in 0.36s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-@keyframes theme-icon-out {
-  from {
-    opacity: 1;
-    transform: rotate(0deg) scale(1);
-  }
-  to {
-    opacity: 0;
-    transform: rotate(90deg) scale(0.5);
-  }
-}
-
-@keyframes theme-icon-in {
-  from {
-    opacity: 0;
-    transform: rotate(-90deg) scale(0.5);
-  }
-  to {
-    opacity: 1;
-    transform: rotate(0deg) scale(1);
-  }
 }

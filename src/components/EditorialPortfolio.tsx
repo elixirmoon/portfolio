@@ -67,24 +67,24 @@ export default function EditorialPortfolio() {
   };
 
   return (
-    <main className="mx-auto max-w-2xl px-6 py-14 sm:py-20 text-[15px] leading-relaxed">
-      {/* Top README Title Row */}
-      <header className="flex items-start justify-between gap-4 border-b border-[var(--rule)] pb-6">
-        <div className="flex items-center gap-3.5">
+    <main className="mx-auto max-w-[740px] px-6 py-12 sm:py-20 text-[15px] leading-[1.7]">
+      {/* README Title */}
+      <header className="flex items-center justify-between gap-4 border-b border-[var(--rule)] pb-5">
+        <div className="flex items-center gap-4">
           <Image
             src="https://github.com/elixirmoon.png"
             alt={PORTFOLIO.name}
-            width={44}
-            height={44}
+            width={48}
+            height={48}
             unoptimized
-            className="h-11 w-11 rounded-full object-cover border border-[var(--rule)]"
+            className="h-12 w-12 rounded-full object-cover border border-[var(--rule)]"
           />
           <div>
-            <h1 className="text-2xl font-bold tracking-tight text-[var(--ink)]">
+            <h1 className="text-[26px] font-bold tracking-tight leading-tight text-[var(--ink)]">
               {PORTFOLIO.name}
             </h1>
-            <p className="text-sm text-[var(--ink-muted)]">
-              {PORTFOLIO.role} · <code>@{PORTFOLIO.handle}</code>
+            <p className="mt-0.5 text-sm text-[var(--ink-muted)]">
+              {PORTFOLIO.role} · <code className="text-[13px]">@{PORTFOLIO.handle}</code>
             </p>
           </div>
         </div>
@@ -93,7 +93,7 @@ export default function EditorialPortfolio() {
           onClick={toggleTheme}
           aria-label={dark ? "Switch to light theme" : "Switch to dark theme"}
           title={dark ? "Switch to light theme" : "Switch to dark theme"}
-          className="relative flex h-8 w-8 items-center justify-center rounded-full border border-[var(--rule)] bg-[var(--surface)] text-[var(--ink-muted)] transition-transform duration-150 hover:border-[var(--accent)] hover:text-[var(--ink)] active:scale-90 cursor-pointer"
+          className="relative flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[var(--rule)] bg-[var(--surface)] text-[var(--ink-muted)] transition-transform duration-150 hover:border-[var(--accent)] hover:text-[var(--ink)] active:scale-90 cursor-pointer"
         >
           <span
             style={{ viewTransitionName: "theme-icon" }}
@@ -108,38 +108,34 @@ export default function EditorialPortfolio() {
         </button>
       </header>
 
-      {/* About */}
-      <section className="border-b border-[var(--rule)] py-7">
-        <p className="text-[var(--ink-muted)]">{PORTFOLIO.bio}</p>
-      </section>
+      {/* Intro */}
+      <p className="mt-6 text-[var(--ink-muted)]">{PORTFOLIO.bio}</p>
 
       {/* Skills */}
-      <section className="border-b border-[var(--rule)] py-7">
-        <h2 className="text-base font-semibold tracking-tight text-[var(--ink)] mb-3">
+      <section className="mt-10">
+        <h2 className="border-b border-[var(--rule)] pb-2 text-lg font-semibold tracking-tight text-[var(--ink)]">
           Skills
         </h2>
-        <ul className="space-y-2 text-sm text-[var(--ink-muted)]">
+        <ul className="mt-4 list-disc pl-5 space-y-2.5 text-[14.5px] text-[var(--ink-muted)] marker:text-[var(--accent)]">
           {PORTFOLIO.skills.map((skill) => (
-            <li key={skill.id} className="flex flex-wrap items-baseline gap-x-2">
-              <span className="text-[var(--accent)]">•</span>
-              <code className="rounded bg-[var(--surface)] px-1.5 py-0.5 text-xs font-semibold text-[var(--ink)]">
+            <li key={skill.id} className="pl-1">
+              <code className="rounded bg-[var(--surface)] px-1.5 py-0.5 text-[13px] font-semibold text-[var(--ink)]">
                 {skill.name}
-              </code>
-              <span>— {skill.note}</span>
+              </code>{" "}
+              <span className="text-[var(--ink-subtle)]">—</span> {skill.note}
             </li>
           ))}
         </ul>
       </section>
 
       {/* Projects */}
-      <section className="border-b border-[var(--rule)] py-7">
-        <h2 className="text-base font-semibold tracking-tight text-[var(--ink)] mb-3">
+      <section className="mt-10">
+        <h2 className="border-b border-[var(--rule)] pb-2 text-lg font-semibold tracking-tight text-[var(--ink)]">
           Projects
         </h2>
-        <ul className="space-y-3 text-sm text-[var(--ink-muted)]">
+        <ul className="mt-4 list-disc pl-5 space-y-4 text-[14.5px] text-[var(--ink-muted)] marker:text-[var(--accent)]">
           {PORTFOLIO.projects.map((project) => (
-            <li key={project.title} className="flex items-start gap-2">
-              <span className="text-[var(--accent)] mt-0.5">•</span>
+            <li key={project.title} className="pl-1">
               <div>
                 {project.href ? (
                   <a
@@ -154,17 +150,17 @@ export default function EditorialPortfolio() {
                   <span className="font-semibold text-[var(--ink)]">{project.title}</span>
                 )}{" "}
                 <span className="text-xs text-[var(--ink-subtle)]">({project.tag})</span>
-                <span> — {project.summary}</span>
-                <div className="mt-1 flex flex-wrap gap-1.5">
-                  {project.stack.map((tech) => (
-                    <code
-                      key={tech}
-                      className="rounded bg-[var(--surface)] px-1.5 py-0.5 text-[11px] text-[var(--ink-subtle)]"
-                    >
-                      {tech}
-                    </code>
-                  ))}
-                </div>
+              </div>
+              <p className="mt-1 text-[var(--ink-muted)]">{project.summary}</p>
+              <div className="mt-2 flex flex-wrap gap-1.5">
+                {project.stack.map((tech) => (
+                  <code
+                    key={tech}
+                    className="rounded bg-[var(--surface)] px-1.5 py-0.5 text-[11.5px] text-[var(--ink-subtle)]"
+                  >
+                    {tech}
+                  </code>
+                ))}
               </div>
             </li>
           ))}
@@ -172,30 +168,28 @@ export default function EditorialPortfolio() {
       </section>
 
       {/* Contact */}
-      <section className="py-7">
-        <h2 className="text-base font-semibold tracking-tight text-[var(--ink)] mb-3">
+      <section className="mt-10">
+        <h2 className="border-b border-[var(--rule)] pb-2 text-lg font-semibold tracking-tight text-[var(--ink)]">
           Contact
         </h2>
-        <ul className="space-y-2 text-sm text-[var(--ink-muted)]">
-          <li className="flex flex-wrap items-center gap-2">
-            <span className="text-[var(--accent)]">•</span>
-            <span>Email:</span>
+        <ul className="mt-4 list-disc pl-5 space-y-2.5 text-[14.5px] text-[var(--ink-muted)] marker:text-[var(--accent)]">
+          <li className="pl-1">
+            <span>Email: </span>
             <a
               href={`mailto:${PORTFOLIO.email}`}
               className="text-[var(--ink)] underline decoration-[var(--rule)] underline-offset-4 hover:decoration-[var(--accent)]"
             >
               {PORTFOLIO.email}
-            </a>
+            </a>{" "}
             <button
               onClick={handleCopyEmail}
-              className="rounded bg-[var(--surface)] px-2 py-0.5 text-xs text-[var(--ink-muted)] hover:text-[var(--ink)] cursor-pointer"
+              className="ml-1 rounded bg-[var(--surface)] px-2 py-0.5 text-xs text-[var(--ink-muted)] hover:text-[var(--ink)] cursor-pointer"
             >
               {copied ? "copied" : "copy"}
             </button>
           </li>
-          <li className="flex items-center gap-2">
-            <span className="text-[var(--accent)]">•</span>
-            <span>GitHub:</span>
+          <li className="pl-1">
+            <span>GitHub: </span>
             <a
               href={PORTFOLIO.github}
               target="_blank"
@@ -208,7 +202,7 @@ export default function EditorialPortfolio() {
         </ul>
       </section>
 
-      <footer className="border-t border-[var(--rule)] pt-6 text-xs text-[var(--ink-subtle)] flex items-center justify-between">
+      <footer className="mt-14 border-t border-[var(--rule)] pt-6 text-xs text-[var(--ink-subtle)] flex items-center justify-between">
         <span>© {new Date().getFullYear()} {PORTFOLIO.name}</span>
         <span>moon.is-a.dev</span>
       </footer>
