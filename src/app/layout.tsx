@@ -10,9 +10,9 @@ export const metadata: Metadata = {
   description:
     "Portfolio of Lara Ilamaran — Computer Science & Mathematics student working with C++, Python, HTML, CSS, and JavaScript.",
   icons: {
-    icon: [{ url: "https://github.com/elixirmoon.png" }],
-    shortcut: "https://github.com/elixirmoon.png",
-    apple: "https://github.com/elixirmoon.png",
+    icon: [{ url: "/favicon.png", type: "image/png" }],
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
   },
 };
 
