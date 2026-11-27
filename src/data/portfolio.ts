@@ -26,6 +26,8 @@ export const PORTFOLIO = {
   github: "https://github.com/elixirmoon",
   linkedin: "https://www.linkedin.com/in/larailamaran",
   linkedinHandle: "larailamaran",
+  instagram: "https://www.instagram.com/larailamaran/",
+  instagramHandle: "larailamaran",
 
   skills: [
     {

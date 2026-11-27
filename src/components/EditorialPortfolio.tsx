@@ -227,6 +227,17 @@ export default function EditorialPortfolio() {
               linkedin.com/in/{PORTFOLIO.linkedinHandle}
             </a>
           </li>
+          <li className="pl-1">
+            <span>Instagram: </span>
+            <a
+              href={PORTFOLIO.instagram}
+              target="_blank"
+              rel="noreferrer"
+              className="text-[var(--ink)] underline decoration-[var(--rule)] underline-offset-4 hover:decoration-[var(--accent)]"
+            >
+              @{PORTFOLIO.instagramHandle}
+            </a>
+          </li>
         </ul>
       </section>
 
