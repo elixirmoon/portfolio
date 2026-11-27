@@ -35,25 +35,42 @@ export default function EditorialPortfolio() {
       Math.max(y, window.innerHeight - y)
     );
 
+    const rootEl = document.documentElement;
+    rootEl.dataset.themeTransition = nextDark ? "out" : "in";
+
     const transition = document.startViewTransition(() => {
       flushSync(applyTheme);
     });
 
     await transition.ready;
 
-    document.documentElement.animate(
+    const anim = rootEl.animate(
       {
-        clipPath: [
-          `circle(0px at ${x}px ${y}px)`,
-          `circle(${maxRadius}px at ${x}px ${y}px)`,
-        ],
+        clipPath: nextDark
+          ? [
+              `circle(0px at ${x}px ${y}px)`,
+              `circle(${maxRadius}px at ${x}px ${y}px)`,
+            ]
+          : [
+              `circle(${maxRadius}px at ${x}px ${y}px)`,
+              `circle(0px at ${x}px ${y}px)`,
+            ],
       },
       {
         duration: 520,
         easing: "cubic-bezier(0.22, 1, 0.36, 1)",
-        pseudoElement: "::view-transition-new(root)",
+        pseudoElement: nextDark
+          ? "::view-transition-new(root)"
+          : "::view-transition-old(root)",
+        fill: "forwards",
       }
     );
+
+    try {
+      await Promise.all([anim.finished, transition.finished]);
+    } finally {
+      delete rootEl.dataset.themeTransition;
+    }
   };
 
   const handleCopyEmail = async () => {
