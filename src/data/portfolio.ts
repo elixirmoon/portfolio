@@ -24,6 +24,8 @@ export const PORTFOLIO = {
   bio: "Computer Science and Mathematics student working with C++ and Python alongside foundational frontend skills in HTML, CSS, and JavaScript—learning deliberately and building step by step.",
   email: "elixir.moon.me@gmail.com",
   github: "https://github.com/elixirmoon",
+  linkedin: "https://www.linkedin.com/in/larailamaran",
+  linkedinHandle: "larailamaran",
 
   skills: [
     {
@@ -86,12 +88,12 @@ export const PORTFOLIO = {
       href: "https://moon.is-a.dev/",
     },
     {
-      title: "C++ & Python Practice",
-      tag: "In Progress",
+      title: "C++ Practice",
+      tag: "GitHub",
       summary:
-        "Space reserved for upcoming C++ and Python exercises, math-focused problem solving, and small utilities.",
-      stack: ["C++", "Python"],
-      href: "https://github.com/elixirmoon",
+        "C++ programs, core language practice, and problem-solving exercises.",
+      stack: ["C++"],
+      href: "https://github.com/elixirmoon/cplusplus",
     },
     {
       title: "Next Frontend Build",

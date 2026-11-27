@@ -199,6 +199,17 @@ export default function EditorialPortfolio() {
               github.com/{PORTFOLIO.handle}
             </a>
           </li>
+          <li className="pl-1">
+            <span>LinkedIn: </span>
+            <a
+              href={PORTFOLIO.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="text-[var(--ink)] underline decoration-[var(--rule)] underline-offset-4 hover:decoration-[var(--accent)]"
+            >
+              linkedin.com/in/{PORTFOLIO.linkedinHandle}
+            </a>
+          </li>
         </ul>
       </section>
 
